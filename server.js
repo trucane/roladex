@@ -1,9 +1,18 @@
 const express = require('express');
 const server = express();
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 
-server.get('/', (req, res) =>{
-    res.send('<div>Hitting server</div>')
+const dbURI = process.env.dbURI;
+const port = process.env.PORT || 5000;
+
+
+mongoose.connect(dbURI, {useNewUrlParser:true, useUnifiedTopology:true}, ()=>{
+
+    server.get('/', (req, res) =>{
+        res.send('<div>Hitting mongoose server</div>')
+    })
 })
 
-server.listen(4000, ()=> console.log('Hitting Server'))
+server.listen(port, ()=> console.log('Hitting Server'))
