@@ -1,7 +1,10 @@
+//bring in mongoose
 const mongoose = require("mongoose");
+
+//bring in db parameters
 const { dbURI } = require("./config");
 
-function connectServer(cb) {
+connectServer = (cb) =>{
   mongoose.connect(
     dbURI,
     { useNewUrlParser: true, useUnifiedTopology: true },
